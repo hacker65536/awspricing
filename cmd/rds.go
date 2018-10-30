@@ -23,6 +23,7 @@ package cmd
 import (
 	//	"encoding/json"
 	"fmt"
+	"regexp"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -48,7 +49,14 @@ to quickly create a Cobra application.`,
 		//fmt.Println("rds called")
 		if len(args) > 0 {
 			//			fmt.Println(args[0])
-			getProductsRds(args[0])
+
+			itype := args[0]
+			re := regexp.MustCompile("^db")
+			if !re.MatchString(itype) {
+
+				itype = "db." + itype
+			}
+			getProductsRds(itype)
 			return
 		} else {
 			fmt.Println("type instance type")
@@ -139,7 +147,6 @@ func getProductsRds(itype ...string) {
 	cpu, _ := at.M("clockSpeed").String()
 	mem, _ := at.M("memory").String()
 	net, _ := at.M("networkPerformance").String()
-	ecu, _ := at.M("ecu").String()
 	vcpu, _ := at.M("vcpu").String()
 	processor, _ := at.M("physicalProcessor").String()
 
@@ -172,7 +179,7 @@ func getProductsRds(itype ...string) {
 	usd, _ := strconv.ParseFloat(price, 64)
 
 	en := exrate / (float64(1) / float64(usd))
-	fmt.Printf("CPU: %s MEM: %s NETWORK: %s ecu: %s vcpu: %s processor: %s \n", cpu, mem, net, ecu, vcpu, processor)
+	fmt.Printf("CPU: %s MEM: %s NETWORK: %s vcpu: %s processor: %s \n", cpu, mem, net, vcpu, processor)
 	fmt.Printf("PRICE: OnDemand %s USD (%f JP) / %s \n", price, en, unit)
 	fmt.Println("DESCRIPTION:", description)
 
