@@ -35,3 +35,10 @@ CPU: 2.3 GHz MEM: 30.5 GiB NETWORK: Up to 10 Gigabit vcpu: 4 processor: Intel Xe
 PRICE: OnDemand 0.5700000000 USD (64.199100 JP) / Hrs
 DESCRIPTION: $0.570 per RDS db.r4.xlarge Single-AZ instance hour (or partial hour) running MySQL
 ```
+
+```console
+$ awspricing rds r4.xlarge
+CPU: 2.3 GHz MEM: 30.5 GiB NETWORK: Up to 10 Gigabit vcpu: 4 processor: Intel Xeon E5-2686 v4 (Broadwell)
+PRICE: OnDemand 0.5700000000 USD (64.199100 JP) / Hrs
+DESCRIPTION: $0.570 per RDS db.r4.xlarge Single-AZ instance hour (or partial hour) running MySQL
+```
