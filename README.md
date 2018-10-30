@@ -1,3 +1,14 @@
+
+## ref
+
+
+https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Operations_AWS_Price_List_Service.html
+
+https://aws.amazon.com/blogs/aws/aws-price-list-api-update-regional-price-lists/
+
+
+
+## example
 ```console
 $ awspricing ec2 c5.xlarge
 CPU: 3.0 Ghz MEM: 8 GiB NETWORK: Up to 10 Gigabit ecu: 17 vcpu: 4 processor: Intel Xeon Platinum 8124M
