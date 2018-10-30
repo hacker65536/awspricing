@@ -1,0 +1,214 @@
+[
+  {
+    "product": {
+      "attributes": {
+        "clockSpeed": "2.3 GHz",
+        "currentGeneration": "Yes",
+        "databaseEngine": "MySQL",
+        "dedicatedEbsThroughput": "400 Mbps",
+        "deploymentOption": "Multi-AZ",
+        "engineCode": "2",
+        "enhancedNetworkingSupported": "Yes",
+        "instanceFamily": "Memory optimized",
+        "instanceType": "db.r4.large",
+        "instanceTypeFamily": "R4",
+        "licenseModel": "No license required",
+        "location": "Asia Pacific (Tokyo)",
+        "locationType": "AWS Region",
+        "memory": "15.25 GiB",
+        "networkPerformance": "Up to 10 Gigabit",
+        "normalizationSizeFactor": "8",
+        "operation": "CreateDBInstance:0002",
+        "physicalProcessor": "Intel Xeon E5-2686 v4 (Broadwell)",
+        "processorArchitecture": "64-bit",
+        "processorFeatures": "Intel AVX, Intel AVX2, Intel Turbo",
+        "servicecode": "AmazonRDS",
+        "servicename": "Amazon Relational Database Service",
+        "storage": "EBS Only",
+        "usagetype": "APN1-Multi-AZUsage:db.r4.large",
+        "vcpu": "2"
+      },
+      "productFamily": "Database Instance",
+      "sku": "D8GBHQEK73G5ADCK"
+    },
+    "publicationDate": "2018-10-24T00:48:38Z",
+    "serviceCode": "AmazonRDS",
+    "terms": {
+      "OnDemand": {
+        "D8GBHQEK73G5ADCK.JRTCKXETXF": {
+          "effectiveDate": "2018-10-01T00:00:00Z",
+          "offerTermCode": "JRTCKXETXF",
+          "priceDimensions": {
+            "D8GBHQEK73G5ADCK.JRTCKXETXF.6YS6EN2CT7": {
+              "appliesTo": [],
+              "beginRange": "0",
+              "description": "$0.570 per RDS db.r4.large Multi-AZ instance hour (or partial hour) running MySQL",
+              "endRange": "Inf",
+              "pricePerUnit": {
+                "USD": "0.5700000000"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.JRTCKXETXF.6YS6EN2CT7",
+              "unit": "Hrs"
+            }
+          },
+          "sku": "D8GBHQEK73G5ADCK",
+          "termAttributes": {}
+        }
+      },
+      "Reserved": {
+        "D8GBHQEK73G5ADCK.38NPMPTW36": {
+          "effectiveDate": "2017-10-31T23:59:59Z",
+          "offerTermCode": "38NPMPTW36",
+          "priceDimensions": {
+            "D8GBHQEK73G5ADCK.38NPMPTW36.2TG2D8R56U": {
+              "appliesTo": [],
+              "description": "Upfront Fee",
+              "pricePerUnit": {
+                "USD": "3373"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.38NPMPTW36.2TG2D8R56U",
+              "unit": "Quantity"
+            },
+            "D8GBHQEK73G5ADCK.38NPMPTW36.6YS6EN2CT7": {
+              "appliesTo": [],
+              "beginRange": "0",
+              "description": "MySQL, db.r4.large reserved instance applied",
+              "endRange": "Inf",
+              "pricePerUnit": {
+                "USD": "0.1283000000"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.38NPMPTW36.6YS6EN2CT7",
+              "unit": "Hrs"
+            }
+          },
+          "sku": "D8GBHQEK73G5ADCK",
+          "termAttributes": {
+            "LeaseContractLength": "3yr",
+            "OfferingClass": "standard",
+            "PurchaseOption": "Partial Upfront"
+          }
+        },
+        "D8GBHQEK73G5ADCK.4NA7Y494T4": {
+          "effectiveDate": "2017-10-31T23:59:59Z",
+          "offerTermCode": "4NA7Y494T4",
+          "priceDimensions": {
+            "D8GBHQEK73G5ADCK.4NA7Y494T4.6YS6EN2CT7": {
+              "appliesTo": [],
+              "beginRange": "0",
+              "description": "MySQL, db.r4.large reserved instance applied",
+              "endRange": "Inf",
+              "pricePerUnit": {
+                "USD": "0.3893000000"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.4NA7Y494T4.6YS6EN2CT7",
+              "unit": "Hrs"
+            }
+          },
+          "sku": "D8GBHQEK73G5ADCK",
+          "termAttributes": {
+            "LeaseContractLength": "1yr",
+            "OfferingClass": "standard",
+            "PurchaseOption": "No Upfront"
+          }
+        },
+        "D8GBHQEK73G5ADCK.6QCMYABX3D": {
+          "effectiveDate": "2017-10-31T23:59:59Z",
+          "offerTermCode": "6QCMYABX3D",
+          "priceDimensions": {
+            "D8GBHQEK73G5ADCK.6QCMYABX3D.2TG2D8R56U": {
+              "appliesTo": [],
+              "description": "Upfront Fee",
+              "pricePerUnit": {
+                "USD": "3183"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.6QCMYABX3D.2TG2D8R56U",
+              "unit": "Quantity"
+            },
+            "D8GBHQEK73G5ADCK.6QCMYABX3D.6YS6EN2CT7": {
+              "appliesTo": [],
+              "beginRange": "0",
+              "description": "MySQL, db.r4.large reserved instance applied",
+              "endRange": "Inf",
+              "pricePerUnit": {
+                "USD": "0.0000000000"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.6QCMYABX3D.6YS6EN2CT7",
+              "unit": "Hrs"
+            }
+          },
+          "sku": "D8GBHQEK73G5ADCK",
+          "termAttributes": {
+            "LeaseContractLength": "1yr",
+            "OfferingClass": "standard",
+            "PurchaseOption": "All Upfront"
+          }
+        },
+        "D8GBHQEK73G5ADCK.HU7G6KETJZ": {
+          "effectiveDate": "2017-10-31T23:59:59Z",
+          "offerTermCode": "HU7G6KETJZ",
+          "priceDimensions": {
+            "D8GBHQEK73G5ADCK.HU7G6KETJZ.2TG2D8R56U": {
+              "appliesTo": [],
+              "description": "Upfront Fee",
+              "pricePerUnit": {
+                "USD": "1624"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.HU7G6KETJZ.2TG2D8R56U",
+              "unit": "Quantity"
+            },
+            "D8GBHQEK73G5ADCK.HU7G6KETJZ.6YS6EN2CT7": {
+              "appliesTo": [],
+              "beginRange": "0",
+              "description": "MySQL, db.r4.large reserved instance applied",
+              "endRange": "Inf",
+              "pricePerUnit": {
+                "USD": "0.1854000000"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.HU7G6KETJZ.6YS6EN2CT7",
+              "unit": "Hrs"
+            }
+          },
+          "sku": "D8GBHQEK73G5ADCK",
+          "termAttributes": {
+            "LeaseContractLength": "1yr",
+            "OfferingClass": "standard",
+            "PurchaseOption": "Partial Upfront"
+          }
+        },
+        "D8GBHQEK73G5ADCK.NQ3QZPMQV9": {
+          "effectiveDate": "2017-10-31T23:59:59Z",
+          "offerTermCode": "NQ3QZPMQV9",
+          "priceDimensions": {
+            "D8GBHQEK73G5ADCK.NQ3QZPMQV9.2TG2D8R56U": {
+              "appliesTo": [],
+              "description": "Upfront Fee",
+              "pricePerUnit": {
+                "USD": "6611"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.NQ3QZPMQV9.2TG2D8R56U",
+              "unit": "Quantity"
+            },
+            "D8GBHQEK73G5ADCK.NQ3QZPMQV9.6YS6EN2CT7": {
+              "appliesTo": [],
+              "beginRange": "0",
+              "description": "MySQL, db.r4.large reserved instance applied",
+              "endRange": "Inf",
+              "pricePerUnit": {
+                "USD": "0.0000000000"
+              },
+              "rateCode": "D8GBHQEK73G5ADCK.NQ3QZPMQV9.6YS6EN2CT7",
+              "unit": "Hrs"
+            }
+          },
+          "sku": "D8GBHQEK73G5ADCK",
+          "termAttributes": {
+            "LeaseContractLength": "3yr",
+            "OfferingClass": "standard",
+            "PurchaseOption": "All Upfront"
+          }
+        }
+      }
+    },
+    "version": "20181024004838"
+  }
+]

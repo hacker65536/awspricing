@@ -27,6 +27,11 @@ import (
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/aws/endpoints"
+	"github.com/aws/aws-sdk-go-v2/aws/external"
+	"github.com/aws/aws-sdk-go-v2/service/pricing"
 )
 
 var cfgFile string
@@ -46,6 +51,39 @@ to quickly create a Cobra application.`,
 	//	Run: func(cmd *cobra.Command, args []string) { },
 }
 
+var (
+	pricingsvc *pricing.Pricing
+	cfg        aws.Config
+	err        error
+)
+
+var exrate = 112.63
+var region string
+var regions map[string]string = map[string]string{
+	"ap-northeast-1": "Asia Pacific (Tokyo)",
+	"ap-northeast-2": "Asia Pacific (Seoul)",
+	"ap-south-1":     "Asia Pacific (Mumbai)",
+	"ap-southeast-1": "Asia Pacific (Singapore)",
+	"ap-southeast-2": "Asia Pacific (Sydney)",
+	"ca-central-1":   "Canada (Central)",
+	"eu-central-1":   "EU (Frankfurt)",
+	"eu-west-1":      "EU (Ireland)",
+	"eu-west-2":      "EU (London)",
+	"eu-west-3":      "EU (Paris)",
+	"sa-east-1":      "South America (Sao Paulo)",
+	"us-east-1":      "US East (N. Virginia)",
+	"us-east-2":      "US East (Ohio)",
+	"us-west-1":      "US West (N. California)",
+	"us-west-2":      "US West (Oregon)",
+}
+
+func chkerr(err error) {
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "ErrOutput: \n", err)
+		os.Exit(1)
+	}
+}
+
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
@@ -56,6 +94,12 @@ func Execute() {
 }
 
 func init() {
+
+	cfg, err = external.LoadDefaultAWSConfig()
+	cfg.Region = endpoints.UsEast1RegionID
+	chkerr(err)
+	pricingsvc = pricing.New(cfg)
+
 	cobra.OnInitialize(initConfig)
 
 	// Here you will define your flags and configuration settings.
