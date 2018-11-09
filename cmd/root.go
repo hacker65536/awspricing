@@ -186,6 +186,7 @@ func getRate() {
 	//fmt.Printf("%s", body)
 	w2f(j2y(body))
 	ratecnf.ReadInConfig()
+	fmt.Printf("\x1b[32m%s\x1b[0m\n", "updata rate file:"+home+"/"+".awspricing_rate.yaml")
 
 }
 
