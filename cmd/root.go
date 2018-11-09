@@ -22,7 +22,14 @@ package cmd
 
 import (
 	"fmt"
+	"gopkg.in/yaml.v2"
+	"io/ioutil"
+	"net/http"
 	"os"
+	//"strconv"
+	//"reflect"
+	"syscall"
+	"time"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
@@ -55,9 +62,11 @@ var (
 	pricingsvc *pricing.Pricing
 	cfg        aws.Config
 	err        error
+	ratecnf    = viper.New()
+	home       string
 )
 
-var exrate = 112.63
+var exrate float64
 var region string
 var regions map[string]string = map[string]string{
 	"ap-northeast-1": "Asia Pacific (Tokyo)",
@@ -77,9 +86,11 @@ var regions map[string]string = map[string]string{
 	"us-west-2":      "US West (Oregon)",
 }
 
-func chkerr(err error) {
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "ErrOutput: \n", err)
+var rateurl = "http://free.currencyconverterapi.com/api/v5/convert?q=USD_JPY&compact=y"
+
+func chkerr(e error) {
+	if e != nil {
+		fmt.Fprintf(os.Stderr, "ErrOutput: \n", e)
 		os.Exit(1)
 	}
 }
@@ -87,6 +98,7 @@ func chkerr(err error) {
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
+
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -94,6 +106,8 @@ func Execute() {
 }
 
 func init() {
+	home, err = homedir.Dir()
+	chkerr(err)
 
 	cfg, err = external.LoadDefaultAWSConfig()
 	cfg.Region = endpoints.UsEast1RegionID
@@ -110,6 +124,8 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	initRate()
+
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -119,11 +135,6 @@ func initConfig() {
 		viper.SetConfigFile(cfgFile)
 	} else {
 		// Find home directory.
-		home, err := homedir.Dir()
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
 
 		// Search config in home directory with name ".awspricing" (without extension).
 		viper.AddConfigPath(home)
@@ -135,5 +146,79 @@ func initConfig() {
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
+	}
+}
+
+func initRate() {
+	// check rate conf
+	ratecnf.AddConfigPath(home)
+	ratecnf.SetConfigName(".awspricing_rate")
+
+	if err := ratecnf.ReadInConfig(); err != nil {
+		// if nofile
+		getRate()
+
+	} else {
+		// chkexpiration
+		chkf()
+
+	}
+	if ratecnf.Get("USD_JPY.val") == nil {
+		//	fmt.Println("nodata")
+		getRate()
+	}
+
+	//	exrate, _ = strconv.ParseFloat(ratecnf.Get("USD_JPY.val").(string), 64)
+	//	fmt.Println("usd", exrate)
+	exrate, _ = ratecnf.Get("USD_JPY.val").(float64)
+
+}
+
+func getRate() {
+	resp, err := http.Get(rateurl)
+	chkerr(err)
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	chkerr(err)
+
+	//fmt.Printf("%s", body)
+	w2f(j2y(body))
+	ratecnf.ReadInConfig()
+
+}
+
+func j2y(b []byte) []byte {
+
+	m := make(map[string]interface{})
+	yaml.Unmarshal(b, &m)
+	//	fmt.Println("y", m)
+	o, _ := yaml.Marshal(&m)
+	//	fmt.Printf("%s", o)
+	return o
+}
+
+func w2f(o []byte) {
+	err = ioutil.WriteFile(home+"/"+".awspricing_rate.yaml", o, 0644)
+	chkerr(err)
+	/*
+		file, err := os.OpenFile(home+"/"+".awspricing_rate.yaml", os.O_RDWR|os.O_CREATE, 0644)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Fprintln(file, o)
+	*/
+}
+
+func chkf() {
+	var s syscall.Stat_t
+	syscall.Stat(home+"/"+".awspricing_rate.yaml", &s)
+
+	c, _ := s.Ctim.Unix()
+
+	t := time.Now()
+	if t.Unix()-c > 172800 {
+		getRate()
 	}
 }
