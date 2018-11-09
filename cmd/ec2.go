@@ -26,6 +26,7 @@ import (
 	"strconv"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 
 	"github.com/koron/go-dproxy"
 
@@ -52,6 +53,13 @@ to quickly create a Cobra application.`,
 			}
 		*/
 
+		if region == "" {
+			region = viper.GetString("region")
+		}
+		if region == "" {
+			region = "us-east-1"
+		}
+
 		if len(args) > 0 {
 			//			fmt.Println(args[0])
 			getProductsEc2(args[0])
@@ -74,7 +82,7 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// ec2Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	ec2Cmd.Flags().StringVarP(&region, "region", "r", "ap-northeast-1", "region")
+	ec2Cmd.Flags().StringVarP(&region, "region", "r", "", "region")
 }
 
 func getProductsEc2(itype ...string) {

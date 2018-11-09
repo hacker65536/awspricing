@@ -76,7 +76,7 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// rdsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	rdsCmd.Flags().StringVarP(&region, "region", "r", "ap-northeast-1", "region")
+	//	rdsCmd.Flags().StringVarP(&region, "region", "r", "ap-northeast-1", "region")
 }
 func getProductsRds(itype ...string) {
 	input := &pricing.GetProductsInput{
