@@ -15,6 +15,10 @@ show rate (USD_JPY)
 $ awspricing ex
 113.941498
 ```
+using http://free.currencyconverterapi.com/api/v5/convert?q=USD_JPY&compact=y  
+cache 2days
+
+
 ```console
 $ awspricing ec2 c5.xlarge
 CPU: 3.0 Ghz MEM: 8 GiB NETWORK: Up to 10 Gigabit ecu: 17 vcpu: 4 processor: Intel Xeon Platinum 8124M
