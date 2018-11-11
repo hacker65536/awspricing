@@ -65,7 +65,6 @@ to quickly create a Cobra application.`,
 				itype = "db." + itype
 			}
 			getProductsRds(itype)
-			return
 		} else {
 			fmt.Println("type instance type")
 		}

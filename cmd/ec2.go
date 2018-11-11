@@ -63,7 +63,6 @@ to quickly create a Cobra application.`,
 		if len(args) > 0 {
 			//			fmt.Println(args[0])
 			getProductsEc2(args[0])
-			return
 		} else {
 			fmt.Println("type instance type")
 		}

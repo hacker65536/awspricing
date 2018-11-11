@@ -68,7 +68,7 @@ var (
 
 var exrate float64
 var region string
-var regions map[string]string = map[string]string{
+var regions = map[string]string{
 	"ap-northeast-1": "Asia Pacific (Tokyo)",
 	"ap-northeast-2": "Asia Pacific (Seoul)",
 	"ap-south-1":     "Asia Pacific (Mumbai)",
