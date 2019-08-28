@@ -21,6 +21,7 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -80,7 +81,7 @@ func describeServices(svc ...string) {
 	}
 
 	req := pricingsvc.DescribeServicesRequest(input)
-	resp, err := req.Send()
+	resp, err := req.Send(context.TODO())
 
 	chkerr(err)
 

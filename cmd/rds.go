@@ -22,6 +22,7 @@ package cmd
 
 import (
 	//	"encoding/json"
+	"context"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -120,7 +121,7 @@ func getProductsRds(itype ...string) {
 	}
 
 	req := pricingsvc.GetProductsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.TODO())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {

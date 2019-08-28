@@ -22,10 +22,12 @@ package cmd
 
 import (
 	"fmt"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"net/http"
 	"os"
+
+	"gopkg.in/yaml.v2"
+
 	//"strconv"
 	//"reflect"
 	"syscall"
@@ -59,7 +61,7 @@ to quickly create a Cobra application.`,
 }
 
 var (
-	pricingsvc *pricing.Pricing
+	pricingsvc *pricing.Client
 	cfg        aws.Config
 	err        error
 	ratecnf    = viper.New()
